@@ -15,27 +15,38 @@
 		<?php
 		include('php/base.php');
 		header_banner();
+		
+		
 	?>
 
 				<!-- Main -->
 					<div id="main">
-						<form method="post" action="profile.php">
+						<?php
+	
+							session_start();
+							$username = $_SESSION['loginuser'];
+							$dbhandle = database_connect();
+							mysqli_query($dbhandle,"USE u703629164_cxu");	
+	
+	
+							$SQLString = "SELECT * FROM users WHERE Username='$username'";
+							$result = mysqli_query($dbhandle, $SQLString);
+							$row = mysqli_fetch_assoc($result);
+							
+						?> 
+						
+						<form method="post" action="php/profileedit.php">
+						<input name="username" type="text" value="<?php echo $row['username']; ?>" readonly/>
+						<input name="email" type="text" value="<?php echo $row['email']; ?>" placeholder="Email"/>
+						<input name="password" type="text" value="<?php echo $row['password']; ?>" placeholder="Password"/>
+						
+						<input type="submit" name = "submit" id="button" value="submit changes"/>
 
+						</form>
 					</div>
 
 									
 
-						<!-- Footer -->
-							<section id="footer">
-								<ul class="icons">
-									<li><a href="#" class="fa-twitter"><span class="label">Twitter</span></a></li>
-									<li><a href="#" class="fa-facebook"><span class="label">Facebook</span></a></li>
-									<li><a href="#" class="fa-instagram"><span class="label">Instagram</span></a></li>
-									<li><a href="#" class="fa-rss"><span class="label">RSS</span></a></li>
-									<li><a href="#" class="fa-envelope"><span class="label">Email</span></a></li>
-								</ul>
-								
-							</section>
 
 					</section>
 

@@ -19,12 +19,34 @@
 
 				<!-- Main -->
 					<div id="main">
+						
+						<div>
+						<form method="post" action="php/login.php" onsubmit="return ValidateForm(this);">
+						
+						<input type="text" name="username" id="username" value="" placeholder="User Name" />
+						
+						
+						<input type="password" name="password" id="pwd" value="" placeholder="Password" />
+					
 
+					
+						<input type="submit" name = "submit" id="button" value="submit"/>
+			
 						
 
 					</div>
 
 									
+
+						<!-- Footer -->
+							<section id="footer">
+								<ul class="icons">
+								
+									<li><a href="#" class="fa-envelope"><span class="label">Email</span></a></li>
+								</ul>
+								
+							</section>
+
 					</section>
 
 			</div>

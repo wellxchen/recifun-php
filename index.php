@@ -57,14 +57,6 @@
 
 									
 
-						<!-- Footer -->
-							<section id="footer">
-								<ul class="icons">
-									
-									<li><a href="#" class="fa-envelope"><span class="label">Email</span></a></li>
-								</ul>
-								
-							</section>
 
 					</section>
 

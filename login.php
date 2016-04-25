@@ -9,6 +9,13 @@
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
 		<!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
+		<script type="text/javascript">
+			function ValidateForm(frm) {
+				if (frm.username.value == "") {alert('Username is required.');frm.username.focus();return false;}
+				if (frm.pwd.value == "") {alert('Password is required.');frm.pwd.focus();return false;}
+			return true; 
+		}
+		</script>
 	</head>
 	<body>
 
@@ -19,12 +26,31 @@
 
 				<!-- Main -->
 					<div id="main">
+						
+	
+						<form method="post" action="php/login.php" onsubmit="return ValidateForm(this);">
+						
+						<div>
+						<input type="text" name="username" id="username" value="" placeholder="User Name" />
+						</div>
+						
+						<div>
+						<input type="password" name="password" id="pwd" value="" placeholder="Password" />
+						</div>
 
+						<div>
+						<input type="submit" name = "submit" id="button" value="submit"/>
+						</div>
+						
+						</form>
 						
 
 					</div>
 
 									
+
+						
+
 					</section>
 
 			</div>

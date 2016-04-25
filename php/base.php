@@ -1,5 +1,7 @@
 <?php
 
+	session_start();
+
 	function header_banner () {
 
 		echo "<!-- Wrapper -->";
@@ -34,7 +36,11 @@
 							echo	"</form>";
 							echo "</section>";
 
-						echo "<!-- Links -->";
+						
+
+							if(isset($_SESSION['loginuser'])) {
+							
+							echo "<!-- Links -->";
 							echo "<section>";
 								echo "<ul class=".'"'."links".'"'.">";
 								echo	"<li>";
@@ -63,21 +69,44 @@
 									echo "</li>";
 								echo "</ul>";
 							echo "</section>";
-
-						echo "<!-- Actions -->";
-							echo "<section>";
-								echo "<ul class=".'"'."actions vertical".'"'.">";
-									echo "<li><a href=".'"'."#".'"'." class=".'"'."button big fit".'"'.">Log In</a></li>";
-								echo "</ul>";
+							
+									echo "<!-- Actions -->";
+									echo "<section>";
+									echo "<ul class=".'"'."actions vertical".'"'.">";
+									echo "<li><a href=".'"'."php/logout.php".'"'." class=".'"'."button big fit".'"'.">Log out</a></li>";
+									echo "</ul>";
+									echo "</section>";
+							}
+							
+							else {
 								
-								echo "<ul class=".'"'."actions vertical".'"'.">";
-									echo "<li><a href=".'"'."#".'"'." class=".'"'."button big fit".'"'.">Sign Up</a></li>";
-								echo "</ul>";
-							echo "</section>";
+									
+									echo "<!-- Actions -->";
+									echo "<section>";
+									echo "<ul class=".'"'."actions vertical".'"'.">";
+									echo "<li><a href=".'"'."login.php".'"'." class=".'"'."button big fit".'"'.">Log In</a></li>";
+									echo "</ul>";
+								
+								
+								
+									echo "<ul class=".'"'."actions vertical".'"'.">";
+									echo "<li><a href=".'"'."signup.php".'"'." class=".'"'."button big fit".'"'.">Sign Up</a></li>";
+									echo "</ul>";
+									echo "</section>";
+							}
 
 					echo "</section>";
 
 				}
+				
+	function database_connect(){
+		$dbhandle = mysqli_connect("mysql.hostinger.co.uk","u703629164_cxu","qwer1234","u703629164_rf");
+		if (mysqli_connect_errno())
+		{
+  			echo "Failed to connect to MySQL: " . mysqli_connect_error();
+  		}
+  		return $dbhandle; 
+	}
 
 								
 ?>
