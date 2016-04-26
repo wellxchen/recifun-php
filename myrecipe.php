@@ -20,7 +20,22 @@
 				<!-- Main -->
 					<div id="main">
 
-						
+						<tbody>
+								<?php
+										$username = $_SESSION['loginuser'];
+										$dbhandle = database_connect();	
+										mysqli_query($dbhandle,"USE u703629164_cxu");											
+										$result = mysqli_query($dbhandle, "SELECT * FROM recipe WHERE username = '$username'");
+										
+										while($row=mysqli_fetch_array($result)){
+												echo '<tr>';
+												echo '<td>';
+												echo '<a href = "recipedetail.php?recipeid='.$row['recipeid'].'">'.$row['title'].'</a><br>';
+												echo '</td>';
+												echo '</tr>';
+										}
+								?>									
+						</tbody>
 
 					</div>
 

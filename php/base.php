@@ -15,7 +15,7 @@
 						echo "<ul>";
 						echo "<li class=".'"'."search".'"'.">";
 								echo	"<a class=".'"'."fa-search".'"'."href=".'"'."#search".'"'.">Search</a>";
-								echo	"<form id=".'"'."search".'"'. "method=".'"'."get".'"'."action=".'"'."#".'"'.">";
+								echo	"<form id=".'"'."search".'"'. "method=".'"'."post".'"'."action=".'"'."php/search.php".'"'.">";
 										echo "<input type="."text"." name="."query"."placeholder="."Search"."/>";
 									echo "</form>";
 								echo "</li>";

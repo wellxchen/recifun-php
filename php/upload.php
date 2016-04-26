@@ -15,7 +15,7 @@
 	
 		if ((!empty($_POST[$ingredient])) && (!empty($_POST[$quantity]))) {
 		
-			$SQL_ingredients = $SQL_ingredients.$_POST[$ingredient].",".$_POST[$quantity].";"; 	
+			$SQL_ingredients = $SQL_ingredients.$_POST[$ingredient]." ".$_POST[$quantity]."; "; 	
 			
 		}
 		else {
@@ -33,7 +33,7 @@
 	
 		if (!empty($_POST[$step])) {
 		
-			$SQL_steps = $SQL_steps.$_POST[$step].";"; 	
+			$SQL_steps = $SQL_steps.$_POST[$step]."; "; 	
 		
 			
 		}
@@ -49,7 +49,7 @@
 	
 	$SQLString = "INSERT INTO recipe (title,ingredient,step,username,likecount,video)
 		VALUES( '$title', '$SQL_ingredients','$SQL_steps', '$username',0, '$video')";
-		mysqli_query($dbhandle, $SQLString);
+	mysqli_query($dbhandle, $SQLString);
  	
  	 				
  	header("Location: ../index.php");

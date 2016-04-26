@@ -19,20 +19,40 @@
 	<!-- Main -->
 					<div id="main">
 
+						
+						<?php 
+						
+							$dbhandle = database_connect();
+							mysqli_query($dbhandle,"USE u703629164_cxu");
+							$SQL = "select * from recipe where likecount=(select max(likecount) from recipe)";
+							$result = mysqli_query($dbhandle, $SQL);
+							$row=mysqli_fetch_array($result);
+							
+							$recipeid = $row['recipeid'];
+							$SQL = "select count(*) as c from comment where recipeid='$recipeid'";
+							$result = mysqli_query($dbhandle, $SQL);
+							$row_c = mysqli_fetch_array($result);
+						?>
+						
 						<!-- Post -->
 							<article class="post">
 								<header>
 									<div class="title">
-										<h2><a href="#">Beijing Duck</a></h2>
-										<p>Traditional Chinese BBQ</p>
+										<?php 
+											echo '<a href = "recipedetail.php?recipeid='.$row['recipeid'].'">'.$row['title'].'</a>';
+										?>
+										
 									</div>
 									<div class="meta">
-										<time class="published" datetime="2015-11-01">December 1, 2016</time>
-										<a href="#" class="author"><span class="name">Author</span><img src="images/avatar-2.jpg" alt="" /></a>
+										
+										<?php
+										 echo '<a href="#" class="author"><span class="name">'.$row['username'].'</span><img src="images/avatar-2.jpg" alt="" /></a>';
+										?>
 									</div>
 								</header>
-								<a href="#" class="image featured"><img src="images/bjduck.jpg" alt="" /></a>
-								<p>Steps</p>
+								<?php
+								echo '<a href="recipedetail.php?recipeid='.$row['recipeid'].'" class="image featured"><img src="images/bjduck.jpg" alt="" /></a>'
+								?>
 								
 								<footer>
 									<ul class="actions">
@@ -40,18 +60,16 @@
 									</ul>
 									<ul class="stats">
 										
-										<li><a href="#" class="icon fa-heart">28</a></li>
-										<li><a href="#" class="icon fa-comment">128</a></li>
+										
+										<?php 
+											echo '<li><a href="recipedetail.php?recipeid='.$row['recipeid']. '"class="'."icon fa-heart".'">'.$row['likecount'].'</a></li>';
+										
+										
+										 echo '<li><a href="recipedetail.php?recipeid='.$row['recipeid']. '"class="'."icon fa-comment".'">'.$row_c['c'].'</a></li>';
+										?>
 									</ul>
 								</footer>
 							</article>
-
-			
-						<!-- Pagination -->
-							<ul class="actions pagination">
-								<li><a href="" class="disabled button big previous">Previous Page</a></li>
-								<li><a href="#" class="button big next">Next Page</a></li>
-							</ul>
 
 					</div>
 
