@@ -14,15 +14,16 @@
 						echo "<nav class=".'"'."main".'"'.">";
 						echo "<ul>";
 						echo "<li class=".'"'."search".'"'.">";
-								echo	"<a class=".'"'."fa-search".'"'."href=".'"'."#search".'"'.">Search</a>";
-								echo	"<form id=".'"'."search".'"'. "method=".'"'."post".'"'."action=".'"'."php/search.php".'"'.">";
-										echo "<input type="."text"." name="."query"."placeholder="."Search"."/>";
-									echo "</form>";
-								echo "</li>";
-								echo "<li class=".'"'."menu".'"'.">";
-								echo "<a class=".'"'."fa-bars".'"'." href=".'"'."#menu".'"'.">Menu</a>";
-								echo "</li>";
-							echo "</ul>";
+								echo "<a class=".'"'."fa-search".'"'."href=".'"'."#search".'"'.">Search</a>";
+								echo '<form id="search" method="post" action="searchresult.php">';
+								echo '<input type= "text" name= "query" placeholder= "Search"/>';
+								echo "</form>";
+						echo "</li>";
+						
+						echo "<li class=".'"'."menu".'"'.">";
+						echo "<a class=".'"'."fa-bars".'"'." href=".'"'."#menu".'"'.">Menu</a>";
+						echo "</li>";
+						echo "</ul>";
 						echo "</nav>";
 					echo "</header>";
 
@@ -31,8 +32,8 @@
 
 						echo "<!-- Search -->";
 						echo "<section>";
-								echo "<form class=".'"'."search".'"'." method=".'"'."get".'"'." action=".'"'."#".'"'.">";
-								echo "<input type=".'"'."text".'"'. " name=".'"'."query".'"'."placeholder=".'"'."Search".'"'."/>";
+								echo '<form class="search" method="post" action="searchresult.php">';
+								echo '<input type="text" name= "query" placeholder="Search"/>';
 							echo	"</form>";
 							echo "</section>";
 

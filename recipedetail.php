@@ -30,6 +30,12 @@
 								
 						?>							
 
+						<tr>
+							<td width="20%" align="right" bgcolor="#FFFFFF">Title： </td>
+							<td width="80%" align="left" bgcolor="#FFFFFF">
+							<input name="ingredients" type="text" value="<?php echo $row['title']; ?>" class="formBorder" readonly/>
+							</td>
+						</tr>
 						
 						<tr>
 							<td width="20%" align="right" bgcolor="#FFFFFF">Ingredients： </td>
@@ -53,6 +59,7 @@
 						</tr>
 						
 						<!-- list comment -->
+						<div>
 						<br>
 						<h3>comment list</h3>
 						<?php
@@ -71,14 +78,22 @@
 												echo '<td>';
 												echo "<h3 value=".$row['username'].">";
 												echo "<h3> title </h3>";
-												echo "<input name=".'"'."ct".'"'. "type=".'"'."text".'"'."value=".$row['title']." readonly/>";
+												echo '<input name="ct" type="text" value='.$row['title'].' readonly/>';
 												echo "<h3> body </h3>";
-												echo "<input name=".'"'."cb".'"'. "type=".'"'."text".'"'."value=".$row['body']." readonly/>";
+												echo '<input name="cb" type="text" value='.$row['body'].' readonly/>';
 												echo '</td>';
 												echo '</tr>';
 												echo '</br>';
 								}
 						?>
+						</div>
+						
+						
+						
+						
+						
+				
+						<!-- comment -->
 						
 						
 						<form method="post" action="php/comment.php">
@@ -94,6 +109,39 @@
 						
 						<input type="submit" name = "submit" id="button" value="submit"/>
 						</form>
+						
+						<!-- favorite -->
+						
+						<?php
+						
+								
+								
+								session_start();
+								$recipeid = $_SESSION['recipeid'] ;
+								$username = $_SESSION['loginuser'];
+								
+								$SQLString = "SELECT * FROM favorite WHERE recipeid = '$recipeid' and username = '$username'";
+								
+								$dbhandle = database_connect();
+								$result = mysqli_query($dbhandle, $SQLString);
+								
+								if ((mysqli_num_rows($result) == 0) && ($result != false)) {
+								
+									echo '<form method="post" action="php/favorite.php">'; 
+						
+									echo '<input type="submit" name = "submit" id="button" value="add to favorite" class="icon fa-heart"/></form>';
+									
+								}
+								
+								else {
+									echo '<form method="post" action="php/unfavorite.php">';
+						
+									echo '<input type="submit" name = "submit" id="button" value="unfavorite" class="icon fa-heart"/></form>';
+								}
+														
+						?>
+						
+						
 						
 					</div>
 
