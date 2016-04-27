@@ -162,14 +162,21 @@
 						<textarea name="step6" cols="40" rows="5" ... ></textarea>
 						</br>
 						
+						<!-- image -->
+						<h3>image</h3>
+						<input type="file" name="image" id="image"/>
+						</br>
+						</br>
+						
 						<!-- video -->
 						
 						<h3>video link</h3>
 						<input type="text" name="video" id="video" value="" placeholder="Video URL" />
-						
 						</br>
 						
 						<input type="submit" name = "submit" id="button" value="submit"/>
+						
+						
 						
 					</form>
 
